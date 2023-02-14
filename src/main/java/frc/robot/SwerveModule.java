@@ -11,8 +11,10 @@ import frc.lib.util.SwerveModuleConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.StatusFrame;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
+import com.ctre.phoenix.sensors.CANCoderStatusFrame;
 
 public class SwerveModule {
     public int moduleNumber;
@@ -85,6 +87,8 @@ public class SwerveModule {
     private void configAngleEncoder(){        
         angleEncoder.configFactoryDefault();
         angleEncoder.configAllSettings(Robot.ctreConfigs.swerveCanCoderConfig);
+        angleEncoder.setStatusFramePeriod(CANCoderStatusFrame.SensorData, 500);
+        angleEncoder.setStatusFramePeriod(CANCoderStatusFrame.VbatAndFaults, 500);
     }
 
     private void configAngleMotor(){
@@ -92,6 +96,13 @@ public class SwerveModule {
         mAngleMotor.configAllSettings(Robot.ctreConfigs.swerveAngleFXConfig);
         mAngleMotor.setInverted(Constants.Swerve.angleMotorInvert);
         mAngleMotor.setNeutralMode(Constants.Swerve.angleNeutralMode);
+        mAngleMotor.setStatusFramePeriod(StatusFrame.Status_1_General, 250);
+        mAngleMotor.setStatusFramePeriod(StatusFrame.Status_12_Feedback1, 20);
+		mAngleMotor.setStatusFramePeriod(StatusFrame.Status_13_Base_PIDF0, 100);
+		mAngleMotor.setStatusFramePeriod(StatusFrame.Status_14_Turn_PIDF1, 100);
+		mAngleMotor.setStatusFramePeriod(StatusFrame.Status_10_Targets, 20);
+		mAngleMotor.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5);
+
         resetToAbsolute();
     }
 
@@ -101,6 +112,12 @@ public class SwerveModule {
         mDriveMotor.setInverted(Constants.Swerve.driveMotorInvert);
         mDriveMotor.setNeutralMode(Constants.Swerve.driveNeutralMode);
         mDriveMotor.setSelectedSensorPosition(0);
+        mDriveMotor.setStatusFramePeriod(StatusFrame.Status_1_General, 250);
+        mDriveMotor.setStatusFramePeriod(StatusFrame.Status_12_Feedback1, 20);
+		mDriveMotor.setStatusFramePeriod(StatusFrame.Status_13_Base_PIDF0, 100);
+		mDriveMotor.setStatusFramePeriod(StatusFrame.Status_14_Turn_PIDF1, 100);
+		mDriveMotor.setStatusFramePeriod(StatusFrame.Status_10_Targets, 20);
+		mDriveMotor.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 5);
     }
 
     public SwerveModuleState getState(){

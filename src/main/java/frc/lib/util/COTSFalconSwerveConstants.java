@@ -84,6 +84,21 @@ public class COTSFalconSwerveConstants {
         return new COTSFalconSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
     }
 
+    /** West Coast Products - Swerve X (Flipped) Module */
+    public static COTSFalconSwerveConstants SwerveXFlipped(double driveGearRatio, double angleGearRatio) {
+        double wheelDiameter = Units.inchesToMeters(4.0);
+
+        double angleKP = 0.3;
+        double angleKI = 0.0;
+        double angleKD = 0.0;
+        double angleKF = 0.0;
+
+        boolean driveMotorInvert = false;
+        boolean angleMotorInvert = true;
+        boolean canCoderInvert = false;
+        return new COTSFalconSwerveConstants(wheelDiameter, angleGearRatio, driveGearRatio, angleKP, angleKI, angleKD, angleKF, driveMotorInvert, angleMotorInvert, canCoderInvert);
+    }
+
     /* Drive Gear Ratios for all supported modules */
     public class driveGearRatios{
         /* SDS MK3 */
@@ -109,6 +124,39 @@ public class COTSFalconSwerveConstants {
         public static final double SDSMK4i_L2 = (6.75 / 1.0);
         /** SDS MK4i - 6.12 : 1 */
         public static final double SDSMK4i_L3 = (6.12 / 1.0);
+
+        /* Swerve X (non-flipped) */
+        /** Swerve X (non-flipped) - L1 */
+        public static final double SWERVEX_REGULAR_L1 = (6.54 / 1.0);
+        /** Swerve X (non-flipped) - L2 */
+        public static final double SWERVEX_REGULAR_L2 = (7.13 / 1.0);
+        /** Swerve X (non-flipped) - L3 */
+        public static final double SWERVEX_REGULAR_L3 = (7.85 / 1.0);
+
+        /* Swerve X (Flipped - Belts) */
+        /** Swerve X (Flipped - Belts) - L1 */
+        public static final double SWERVEX_FLIPPED_BELTS_L1 = (5.50 / 1.0);
+        /** Swerve X (Flipped - Belts) - L2 */
+        public static final double SWERVEX_FLIPPED_BELTS_L2 = (6.55 / 1.0);
+        /** Swerve X (Flipped - Belts) - L3 */
+        public static final double SWERVEX_FLIPPED_BELTS_L3 = (7.80 / 1.0);
+
+        /* Swerve X (Flipped - Gears) */
+        /** Swerve X (Flipped - Gears) - L1 */
+        public static final double SWERVEX_FLIPPED_Gears_L1 = (6.75 / 1.0);
+        /** Swerve X (Flipped - Gears) - L2 */
+        public static final double SWERVEX_FLIPPED_Gears_L2 = (7.36 / 1.0);
+        /** Swerve X (Flipped - Gears) - L3 */
+        public static final double SWERVEX_FLIPPED_Gears_L3 = (8.10 / 1.0);
+    }
+
+    /* Angle Gear Ratios for the Swerve X Modules */
+    public class angleGearRatios {
+        public static final double SWERVEX_REGULAR = (15.43 / 1.0);
+
+        public static final double SWERVEX_FLIPPED_BELTS = (10.29 / 1.0);
+
+        public static final double SWERVEX_FLIPPED_GEARS = (15.43 / 1.0);
     }
 }
 
